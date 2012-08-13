@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  capacity: 1
+  time: 1
+  party_type_id: 1
+
+two:
+  name: MyString
+  capacity: 1
+  time: 1
+  party_type_id: 1

@@ -1,4 +1,8 @@
 PartyJobs::Application.routes.draw do
+  
+
+  get "assigner/assign"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

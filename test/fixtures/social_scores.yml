@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+akash:
+  value: 1
+  brother_id: 1
+
+nick:
+  value: 10
+  brother_id: 2
