@@ -1,13 +1,13 @@
 module Assign
 	def assign(party_name)
 		#Get all of the brothers and clean out the absentees
-		bros = Brother.all.delete_if {|brother| brother.social_score.absent}
+		bros = Brother.all.shuffle!.delete_if {|brother| brother.social_score.absent}
 		#Go through each brother and make sure his prefs are sorted accordingly
 		bros.each do |brother|
 			brother.party_prefs.sort!{|pref| pref.rank}
 		end
 		#Get the necessary jobs as decided by the type of party
-		needed_jobs = PartyType.find(Party.find(party_name).type_name.party_jobs)
+		needed_jobs = PartyType.find(Party.find(party_name).type_name).party_jobs
 		#Find the job corresponding to none and expand its capacity to the correct amount
 		needed_jobs[needed_jobs.index {|job| job.name == "none"}].capacity = bros.length - needed_jobs.length
 		#Create the hash we will use to assign and look up jobs
@@ -43,7 +43,5 @@ module Assign
 		jobs.each do |job, husbands|
 			husbands.each {|brother| brother.party_assignments.create(name: job.name, :time job.time, party_id: party.id)}
 		end
-
 	end
-
 end
